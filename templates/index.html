@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia Jiré</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body onload="alterar_enter_descricao(true)">
+    <div class="navigation">
+        <a href="{{ url_for('homepage') }}" title="Checar Medicamentos">Medicamentos para Conferência</a>
+        <a href="" title="Apenas para Administrador">Encomendas</a>
+    </div>
+    <div class="pesquisa">
+        <form action="{{ url_for('search_produto') }}" method="post">
+            <input type="text" name="search" id="search" class="search" placeholder="Buscar por: " value="{{ search_value }}" onfocus="alterar_enter_descricao(false)" onblur="alterar_enter_descricao(true)">
+        </form>
+    </div>
+    <div class="produtos" id="produtos">
+        {% for k, v in produtos.items() %}
+            {% set todos_os_produtos = v['nome_produto'] %}
+            {% set qtd_produto = v['qtd_produto'] %}
+            {% for produto in todos_os_produtos %}
+                <p title="Empresa: {{ v['empresa_produto'] }}&#10;Nota N°: {{ v['n_nfe_produto'] }}&#10;Data de Emissão: {{ v['data_de_emissao'] }}&#10;Quantidade: {{ qtd_produto[loop.index0] | int }}" class="prod">
+                    {{ produto }}
+                </p>
+                <p class="descricao_produto">info_sobre {{ produto }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</body>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</html>
