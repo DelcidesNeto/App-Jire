@@ -143,5 +143,6 @@ def search_produto():
         search_result[0] = buscar_produtos(search)
     return redirect('/')
 
-port = int(os.environ.get('PORT', 5000))  # Usa a variável de ambiente PORT ou 5000 se não estiver definida
-app.run(host='0.0.0.0', port=port)
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))  # Usa a variável de ambiente PORT ou 5000 se não estiver definida
+    app.run(host='0.0.0.0', port=port)       # Escuta na porta fornecida
