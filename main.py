@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request
 from url_api import url
 import xmltodict
 import re
+import os
 app = Flask(__name__)
 produtos = {}
 search_result = ['']
