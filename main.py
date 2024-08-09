@@ -46,13 +46,13 @@ def buscar_produtos(padrao):
     #caso esteja salvar em uma lista temporária, com seus
     print('Tamanhoooooooooo')
     print(len(produtos))
+    resultados = {}
     for k, v in produtos.items():
         lista = v['nome_produto']
         print('Tamanho listaaaaaaaaa')
         print(len(lista))
         print('listaaaaaaaaa')
         print(lista)
-        resultados = {}
         nome_produto = []
         qtd_produto = []
         cod_produto = []
